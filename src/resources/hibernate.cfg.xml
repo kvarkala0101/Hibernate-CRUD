@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+		<property name="connection.username">SYS AS SYSDBA</property>
+		<property name="connection.password">system</property>
+		<property name="connection.pool_size">10</property>
+	
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="hbm2ddl.auto">update</property>
+		<!--  
+		create ->it delete existing tables and creates a new table with the mapping name
+		update ->  if any table required it will create table, if any table required alter operation it will do that.
+		validate -> check mapping schema against table schema.(it means it checks the mapping file is valid for database table schema).
+		create-drop -> drop the existing table, creates new table, and again drops the table at the time of sessionFactory.close(), for testing purpose it is best use case
+		-->
+		<property name="show_sql">true</property>
+		
+		<mapping resource="resources/student.hbm.xml"></mapping>
+	</session-factory>
+</hibernate-configuration>
